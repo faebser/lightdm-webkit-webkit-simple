@@ -1,0 +1,54 @@
+/* --------------------------------------------
+Lightgmd custom greeter
+
+Author:		Fabian Frei
+URL: 		https://github.com/faebser
+License: 	GPL
+----------------------------------------------- */
+@import "compass/css3/transition";
+
+@import 'util';
+
+@include font-block('bebas', 'bebasneue/BebasNeue-webfont');
+@include font-block('sourcepro', 'sourcepro/sourcecodepro-bold-webfont');
+
+$line: #324860;
+$font: #1A2E3F;
+$bg: #708090;
+
+@mixin weave ($bg: #708090, $line: #d9ecff) {
+    background: linear-gradient(135deg, $bg 22px, $line 22px, $line 24px, transparent 24px, transparent 67px, $line 67px, $line 69px, transparent 69px),
+    linear-gradient(225deg, $bg 22px, $line 22px, $line 24px, transparent 24px, transparent 67px, $line 67px, $line 69px, transparent 69px)0 64px;
+    background-color:$bg;
+    background-size: 64px 128px;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    color: $font;
+    font-family: 'sourcepro';
+    @include weave($bg, rgba($line, 0.15));
+    //background-image: url("../img/noise.png");
+    //background-repeat: repeat;
+}
+
+#outer {
+    height: 100%;
+    width: 100%;
+    @extend %center-parent;
+    p {
+        @extend %center-child;
+        font-size: 17rem;
+        line-height: 1;
+        border: 1px solid transparent;
+        @include transition(border-color 0.5s linear);
+    }
+}
